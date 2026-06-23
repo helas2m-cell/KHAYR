@@ -1,0 +1,8 @@
+{
+  "name": "Remix: KHAYR – Intelligent Dentistry Solutions _Mei",
+  "description": "An intelligent operating system for dental practices. It connects scheduling, clinical odontograms, EMR histories, inventory tracking, and dashboard analytics into one unified system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
