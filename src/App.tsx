@@ -14,7 +14,7 @@ import { PillarsSection } from './components/PillarsSection';
 import { ModulesSection } from './components/ModulesSection';
 import { FlywheelSection } from './components/FlywheelSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
-import { PricingSection } from './components/PricingSection';
+import { PricingPage } from './components/PricingPage';
 import { SecurityBand } from './components/SecurityBand';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
@@ -49,6 +49,9 @@ export default function App() {
   // Config state for language selection: default 'id' (Indonesian) as per spec
   const [lang, setLang] = useState<Language>('id');
   
+  // Current page view state ('home' | 'pricing')
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing'>('home');
+
   // Connect pricing selection to contact form size selection
   const [preselectedClinicSize, setPreselectedClinicSize] = useState<string>('');
 
@@ -56,6 +59,29 @@ export default function App() {
   const [loggedInUser, setLoggedInUser] = useState<{ email: string; role: string; roleLabel: string; name: string } | null>(null);
 
   const t = translations[lang];
+
+  // Router and scrolling handler
+  const handleNav = (page: 'home' | 'pricing', hash?: string) => {
+    setCurrentPage(page);
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  // Plan selection from separate PricingPage
+  const handleSelectPlanOnPricingPage = (planName: string, sizeOption: string) => {
+    setPreselectedClinicSize(sizeOption);
+    handleNav('home', '#contact');
+  };
 
   return (
     <div className="min-h-screen bg-white text-[#141928] selection:bg-[#1B3A7A] selection:text-white antialiased transition-all">
@@ -65,6 +91,8 @@ export default function App() {
         t={t} 
         loggedInUser={loggedInUser} 
         setLoggedInUser={setLoggedInUser} 
+        currentPage={currentPage}
+        onNavigate={handleNav}
       />
       
       <main>
@@ -79,19 +107,29 @@ export default function App() {
           </div>
         )}
 
-        <Hero t={t} />
-        <TrustBar t={t} />
-        <PlatformSection t={t} />
-        <PillarsSection t={t} />
-        <ModulesSection t={t} />
-        <FlywheelSection t={t} />
-        <TestimonialsSection t={t} />
-        <PricingSection t={t} onSelectPlan={(_, sizeOption) => setPreselectedClinicSize(sizeOption)} />
-        <SecurityBand t={t} />
-        <ContactSection t={t} preselectedClinicSize={preselectedClinicSize} />
+        {currentPage === 'home' ? (
+          <>
+            <Hero t={t} />
+            <TrustBar t={t} />
+            <PlatformSection t={t} />
+            <PillarsSection t={t} />
+            <ModulesSection t={t} />
+            <FlywheelSection t={t} />
+            <TestimonialsSection t={t} />
+            <SecurityBand t={t} />
+            <ContactSection t={t} preselectedClinicSize={preselectedClinicSize} />
+          </>
+        ) : (
+          <PricingPage 
+            t={t} 
+            lang={lang} 
+            onSelectPlan={handleSelectPlanOnPricingPage} 
+            onBackToHome={() => handleNav('home')} 
+          />
+        )}
       </main>
 
-      <Footer t={t} />
+      <Footer t={t} onNavigate={handleNav} />
       
       <WhatsAppFAB lang={lang} />
     </div>

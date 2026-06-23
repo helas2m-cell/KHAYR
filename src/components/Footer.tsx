@@ -8,18 +8,27 @@ import { TranslationSet } from '../types';
 
 interface FooterProps {
   t: TranslationSet;
+  onNavigate?: (page: 'home' | 'pricing', hash?: string) => void;
 }
 
-export function Footer({ t }: FooterProps) {
+export function Footer({ t, onNavigate }: FooterProps) {
   const isId = t.nav_pricing === "Harga";
   const defaultMsg = isId ? "Halo, saya tertarik dengan solusi KHAYR OS." : "Hello, I am interested in KHAYR OS solutions.";
   const waUrl = `https://wa.me/6281932415455?text=${encodeURIComponent(defaultMsg)}`;
 
   const handleScrollToSection = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
-    const element = document.querySelector(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (onNavigate) {
+      if (id === '#pricing') {
+        onNavigate('pricing');
+      } else {
+        onNavigate('home', id);
+      }
+    } else {
+      const element = document.querySelector(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

@@ -13,9 +13,11 @@ interface NavbarProps {
   t: TranslationSet;
   loggedInUser: { email: string; role: string; roleLabel: string; name: string } | null;
   setLoggedInUser: (user: { email: string; role: string; roleLabel: string; name: string } | null) => void;
+  currentPage: 'home' | 'pricing';
+  onNavigate: (page: 'home' | 'pricing', hash?: string) => void;
 }
 
-export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser }: NavbarProps) {
+export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, currentPage, onNavigate }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   // Login modal and session states
@@ -32,9 +34,10 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser }: Navb
 
   const handleLinkClick = (hash: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(hash);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (hash === '#pricing') {
+      onNavigate('pricing');
+    } else {
+      onNavigate('home', hash);
     }
   };
 
@@ -87,7 +90,7 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser }: Navb
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-[72px]">
           {/* Logo & wordmark */}
-          <a href="#" className="flex items-center gap-3 active:opacity-90 transition-opacity" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+          <a href="#" className="flex items-center gap-3 active:opacity-90 transition-opacity" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
             <img 
               src="https://lh3.googleusercontent.com/d/150WvQCwLbSMGadPl2eVEdXoK-zB7j813" 
               alt="KHAYR Logo" 
