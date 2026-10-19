@@ -107,8 +107,8 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
             <button onClick={() => handleLinkClick('#modules')} className="text-[13px] text-[#5A5F6B] font-bold hover:text-[#1B3A7A] transition-colors cursor-pointer">
               {t.nav_modules}
             </button>
-            <button onClick={() => handleLinkClick('#flywheel')} className="text-[13px] text-[#5A5F6B] font-bold hover:text-[#1B3A7A] transition-colors cursor-pointer">
-              {t.nav_howitworks}
+            <button onClick={() => handleLinkClick('#voucher')} className="text-[13px] text-[#5A5F6B] font-bold hover:text-[#1B3A7A] transition-colors cursor-pointer">
+              Voucher System
             </button>
             <button onClick={() => handleLinkClick('#pricing')} className="text-[13px] text-[#5A5F6B] font-bold hover:text-[#1B3A7A] transition-colors cursor-pointer">
               {t.nav_pricing}
@@ -163,15 +163,8 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
                 </button>
               </div>
             ) : (
-              /* Normal watch demo, request demo & login buttons */
+              /* Login & Request Demo buttons */
               <>
-                <button
-                  onClick={() => handleLinkClick('#modules')}
-                  className="px-[16px] py-[10px] border-2 border-[#1B3A7A] rounded-[8px] text-[13px] font-bold text-[#1B3A7A] hover:bg-[#EEF2FB] active:scale-95 transition-all cursor-pointer"
-                >
-                  {t.nav_watchdemo}
-                </button>
-
                 <button
                   onClick={() => setIsLoginOpen(true)}
                   className="px-[16px] py-[10px] rounded-[8px] text-[13px] font-bold text-[#1B3A7A] hover:bg-[#EEF2FB] hover:text-[#112660] transition-colors cursor-pointer"
@@ -240,10 +233,10 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
               {t.nav_modules}
             </button>
             <button
-              onClick={() => handleLinkClick('#flywheel')}
+              onClick={() => handleLinkClick('#voucher')}
               className="text-left w-full text-[14px] font-bold text-[#5A5F6B] py-2 border-b border-[#F4F6FA] hover:text-[#1B3A7A]"
             >
-              {t.nav_howitworks}
+              Voucher System
             </button>
             <button
               onClick={() => handleLinkClick('#pricing')}
@@ -296,20 +289,12 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
                 >
                   {t.nav_login}
                 </button>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => handleLinkClick('#modules')}
-                    className="flex-1 text-center py-[10px] border-2 border-[#1B3A7A] rounded-[8px] text-[13px] font-bold text-[#1B3A7A]"
-                  >
-                    {t.nav_watchdemo}
-                  </button>
-                  <button
-                    onClick={() => handleLinkClick('#contact')}
-                    className="flex-1 text-center py-[10px] bg-[#1B3A7A] rounded-[8px] text-[13px] font-bold text-white hover:bg-[#112660]"
-                  >
-                    {t.nav_requestdemo}
-                  </button>
-                </div>
+                <button
+                  onClick={() => handleLinkClick('#contact')}
+                  className="w-full text-center py-[10px] bg-[#1B3A7A] rounded-[8px] text-[13px] font-bold text-white hover:bg-[#112660]"
+                >
+                  {t.nav_requestdemo}
+                </button>
               </div>
             )}
           </div>

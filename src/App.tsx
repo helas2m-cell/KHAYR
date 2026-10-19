@@ -12,7 +12,7 @@ import { TrustBar } from './components/TrustBar';
 import { PlatformSection } from './components/PlatformSection';
 import { PillarsSection } from './components/PillarsSection';
 import { ModulesSection } from './components/ModulesSection';
-import { FlywheelSection } from './components/FlywheelSection';
+import { VoucherSection } from './components/VoucherSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { PricingPage } from './components/PricingPage';
 import { SecurityBand } from './components/SecurityBand';
@@ -114,7 +114,7 @@ export default function App() {
             <PlatformSection t={t} />
             <PillarsSection t={t} />
             <ModulesSection t={t} />
-            <FlywheelSection t={t} />
+            <VoucherSection t={t} lang={lang} />
             <TestimonialsSection t={t} />
             <SecurityBand t={t} />
             <ContactSection t={t} preselectedClinicSize={preselectedClinicSize} />
