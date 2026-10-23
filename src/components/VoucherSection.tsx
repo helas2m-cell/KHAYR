@@ -34,15 +34,6 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
     : "Hello KHAYR team, I am interested in the KHAYR Voucher Promotion feature for our dental clinic services.";
   const waUrl = `https://wa.me/6281932415455?text=${encodeURIComponent(waMsg)}`;
 
-  // 5 Partner Apps
-  const partnerApps = [
-    { name: "Telkomsel", color: "from-[#EC1C24] to-[#A30C12]", bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
-    { name: "Indosat", color: "from-[#FFBF00] to-[#E68A00]", bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200" },
-    { name: "AXISNET", color: "from-[#7B1FA2] to-[#4A148C]", bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-200" },
-    { name: "XL", color: "from-[#0066B2] to-[#003B6F]", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
-    { name: "AstraPay", color: "from-[#00529C] to-[#002D59]", bg: "bg-sky-50", text: "text-sky-800", border: "border-sky-200" }
-  ];
-
   return (
     <section id="voucher" className="py-24 bg-white scroll-mt-20 relative overflow-hidden font-sans border-b border-[#DDE3EE]">
       {/* Background soft ambient accents */}
@@ -133,22 +124,19 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               <p className="text-xs font-bold text-[#3D8B7A] mb-3">
                 {isId ? 'Melalui jaringan aplikasi mitra terkemuka.' : 'Across top digital partner apps.'}
               </p>
-              <p className="text-[13px] text-[#5A5F6B] leading-relaxed font-medium mb-4">
+              <p className="text-[13px] text-[#5A5F6B] leading-relaxed font-medium">
                 {isId 
                   ? 'Voucher promosi klinik Anda ditampilkan pada lima aplikasi mitra raksasa: Telkomsel, Indosat, AXISNET, XL, dan AstraPay untuk menjangkau calon pasien baru.' 
                   : 'Your dental vouchers are distributed across 5 major Indonesian digital ecosystems: Telkomsel, Indosat, AXISNET, XL, and AstraPay to attract high-intent new patients.'}
               </p>
 
-              {/* Partner Badges */}
-              <div className="flex flex-wrap gap-1.5">
-                {partnerApps.map((p) => (
-                  <span 
-                    key={p.name} 
-                    className={`text-[11px] font-extrabold px-2.5 py-1 rounded-md border ${p.bg} ${p.text} ${p.border}`}
-                  >
-                    {p.name}
-                  </span>
-                ))}
+              <div className="mt-4 p-2.5 bg-white rounded-xl border border-[#E2E8F0] shadow-xs flex items-center justify-center">
+                <img 
+                  src="/assets/aistudio/Telcos_app_logo_59015ec6.jpg" 
+                  alt={isId ? "Aplikasi mitra: Telkomsel, Indosat, AXIS, XL, AstraPay" : "Partner apps: Telkomsel, Indosat, AXIS, XL, AstraPay"} 
+                  className="w-full h-auto max-h-28 object-contain rounded-lg"
+                  loading="lazy"
+                />
               </div>
             </div>
 
