@@ -62,7 +62,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
   };
 
   const baseCost = calculateBaseCost(chairCount);
-  const invoiceCost = invoiceCount * 3000;
+  const invoiceCost = invoiceCount * 4000;
   const totalCost = baseCost + invoiceCost;
 
   const toggleFaq = (index: number) => {
@@ -88,7 +88,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
   const faqItems = isId ? [
     {
       q: "Apakah saya masih membayar biaya bulanan tetap?",
-      a: "Tidak hanya biaya dasar bulanan. Total biaya terdiri atas biaya dasar berdasarkan jumlah kamar(kursi) perawatan dan biaya penggunaan sebesar Rp3.000 untuk setiap invoice yang diterbitkan."
+      a: "Tidak hanya biaya dasar bulanan. Total biaya terdiri atas biaya dasar berdasarkan jumlah kamar(kursi) perawatan dan biaya penggunaan sebesar Rp4.000 untuk setiap invoice yang diterbitkan."
     },
     {
       q: "Bagaimana jika jumlah invoice klinik sedikit?",
@@ -104,12 +104,12 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
     },
     {
       q: "Bagaimana cara memperkirakan biaya bulanan klinik saya?",
-      a: "Hitung biaya dasar sesuai jumlah kamar(kursi) perawatan, lalu tambahkan Rp3.000 dikalikan jumlah invoice yang diperkirakan akan diterbitkan dalam satu bulan."
+      a: "Hitung biaya dasar sesuai jumlah kamar(kursi) perawatan, lalu tambahkan Rp4.000 dikalikan jumlah invoice yang diperkirakan akan diterbitkan dalam satu bulan."
     }
   ] : [
     {
       q: "Do I still pay a fixed monthly subscription fee?",
-      a: "Not just a fixed monthly base fee. The total cost consists of a base fee according to the number of dental rooms/chairs plus a usage fee of Rp3,000 for each invoice issued."
+      a: "Not just a fixed monthly base fee. The total cost consists of a base fee according to the number of dental rooms/chairs plus a usage fee of Rp4,000 for each invoice issued."
     },
     {
       q: "What if our clinic issues only a small number of invoices?",
@@ -125,7 +125,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
     },
     {
       q: "How can I estimate my clinic's monthly cost?",
-      a: "Calculate the base fee according to your number of dental rooms/chairs, then add Rp3,000 multiplied by the estimated number of invoices issued in that month."
+      a: "Calculate the base fee according to your number of dental rooms/chairs, then add Rp4,000 multiplied by the estimated number of invoices issued in that month."
     }
   ];
 
@@ -246,8 +246,8 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
               <CheckCircle2 size={15} className="shrink-0 text-[#3D8B7A]" />
               <span>
                 {isId 
-                  ? 'Setiap tambahan kamar(kursi) perawatan setelah yang pertama menambah biaya dasar Rp50.000 per bulan.'
-                  : 'Each additional room/chair beyond the first adds Rp50,000 per month to the base fee.'}
+                  ? 'Setiap tambahan kamar(kursi) perawatan setelah yang kedua menambah biaya dasar Rp50.000 per bulan.'
+                  : 'Each additional room/chair beyond the second adds Rp50,000 per month to the base fee.'}
               </span>
             </div>
           </div>
@@ -271,8 +271,8 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
 
               <p className="text-[13.5px] text-[#5A5F6B] leading-relaxed mb-6 font-medium">
                 {isId
-                  ? 'Selain biaya dasar bulanan, terdapat biaya penggunaan sebesar Rp3.000 untuk setiap invoice yang diterbitkan melalui aplikasi. Komponen biaya ini mengikuti aktivitas penerbitan invoice yang dilakukan klinik.'
-                  : 'In addition to the monthly base fee, there is a usage fee of Rp3,000 for each invoice issued through the application, aligning perfectly with your actual patient activity.'}
+                  ? 'Selain biaya dasar bulanan, terdapat biaya penggunaan sebesar Rp4.000 untuk setiap invoice yang diterbitkan melalui aplikasi. Komponen biaya ini mengikuti aktivitas penerbitan invoice yang dilakukan klinik.'
+                  : 'In addition to the monthly base fee, there is a usage fee of Rp4,000 for each invoice issued through the application, aligning perfectly with your actual patient activity.'}
               </p>
 
               {/* Tabel Simulasi Penggunaan Invoice Sesuai PDF */}
@@ -281,7 +281,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   <thead className="bg-[#E6F5F2] text-[#256B5D] font-extrabold uppercase text-[11px] tracking-wider border-b border-[#DDE3EE]">
                     <tr>
                       <th className="py-3 px-4">{isId ? 'Jumlah Invoice per Bulan' : 'Invoices per Month'}</th>
-                      <th className="py-3 px-4 text-right">{isId ? 'Biaya Penggunaan (Rp3.000/inv)' : 'Usage Fee'}</th>
+                      <th className="py-3 px-4 text-right">{isId ? 'Biaya Penggunaan (Rp4.000/inv)' : 'Usage Fee (Rp4,000/inv)'}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#E6EAF2] font-semibold text-[#141928]">
@@ -289,31 +289,31 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                       <td className="py-2.5 px-4 flex items-center gap-2">
                         <FileText size={15} className="text-[#1B3A7A]" /> 20 invoice
                       </td>
-                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp60.000</td>
+                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp80.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
                         <FileText size={15} className="text-[#1B3A7A]" /> 50 invoice
                       </td>
-                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp150.000</td>
+                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp200.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
                         <FileText size={15} className="text-[#1B3A7A]" /> 80 invoice
                       </td>
-                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp240.000</td>
+                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp320.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
                         <FileText size={15} className="text-[#1B3A7A]" /> 100 invoice
                       </td>
-                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp300.000</td>
+                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp400.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
                         <FileText size={15} className="text-[#1B3A7A]" /> 200 invoice
                       </td>
-                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp600.000</td>
+                      <td className="py-2.5 px-4 text-right font-bold text-[#256B5D]">Rp800.000</td>
                     </tr>
                   </tbody>
                 </table>
@@ -324,8 +324,8 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
               <CheckCircle2 size={15} className="shrink-0 text-[#3D8B7A]" />
               <span>
                 {isId 
-                  ? 'Perhitungan menggunakan tarif Rp3.000 per invoice dan belum termasuk biaya dasar bulanan.'
-                  : 'Calculated at Rp3,000 per invoice; excludes the monthly base fee.'}
+                  ? 'Perhitungan menggunakan tarif Rp4.000 per invoice dan belum termasuk biaya dasar bulanan.'
+                  : 'Calculated at Rp4,000 per invoice; excludes the monthly base fee.'}
               </span>
             </div>
           </div>
@@ -382,8 +382,8 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   </h4>
                   <p className="text-xs text-[#5A5F6B] leading-relaxed font-medium">
                     {isId 
-                      ? 'Dipotong otomatis Rp3.000 secara real-time setiap kali invoice pasien diterbitkan.' 
-                      : 'Automatically deducted at Rp3,000 real-time whenever a patient invoice is issued.'}
+                      ? 'Dipotong otomatis Rp4.000 secara real-time setiap kali invoice pasien diterbitkan.' 
+                      : 'Automatically deducted at Rp4,000 real-time whenever a patient invoice is issued.'}
                   </p>
                 </div>
               </div>
@@ -488,8 +488,8 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   </h3>
                   <p className="text-[12.5px] text-[#5A5F6B] leading-relaxed font-medium">
                     {isId 
-                      ? 'Setiap kali invoice diterbitkan melalui aplikasi, saldo berkurang sebesar Rp3.000.' 
-                      : 'Every time an invoice is issued via the app, balance is deducted by Rp3,000.'}
+                      ? 'Setiap kali invoice diterbitkan melalui aplikasi, saldo berkurang sebesar Rp4.000.' 
+                      : 'Every time an invoice is issued via the app, balance is deducted by Rp4,000.'}
                   </p>
                 </div>
               </div>
@@ -946,8 +946,8 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   </div>
                   <p className="text-[11px] text-[#8A8F9A] mt-1.5">
                     {isId 
-                      ? `Biaya penggunaan: ${invoiceCount} invoice × Rp3.000 = ${formatRupiah(invoiceCost)}` 
-                      : `Usage fee: ${invoiceCount} invoices × Rp3,000 = ${formatRupiah(invoiceCost)}`}
+                      ? `Biaya penggunaan: ${invoiceCount} invoice × Rp4.000 = ${formatRupiah(invoiceCost)}` 
+                      : `Usage fee: ${invoiceCount} invoices × Rp4,000 = ${formatRupiah(invoiceCost)}`}
                   </p>
                 </div>
 
@@ -966,7 +966,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                       <span className="font-bold text-[#141928]">{formatRupiah(baseCost)}</span>
                     </div>
                     <div className="flex justify-between items-center text-[#5A5F6B]">
-                      <span>{isId ? `Biaya Invoice (${invoiceCount} × Rp3.000)` : `Invoice Fee (${invoiceCount} × Rp3,000)`}</span>
+                      <span>{isId ? `Biaya Invoice (${invoiceCount} × Rp4.000)` : `Invoice Fee (${invoiceCount} × Rp4,000)`}</span>
                       <span className="font-bold text-[#141928]">{formatRupiah(invoiceCost)}</span>
                     </div>
                   </div>
