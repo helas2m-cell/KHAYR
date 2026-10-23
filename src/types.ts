@@ -95,6 +95,7 @@ export interface TranslationSet {
   p3_i2: string;
   p3_i3: string;
   p3_i4: string;
+  p3_i5: string;
 
   // Inside parts
   mod_label: string;

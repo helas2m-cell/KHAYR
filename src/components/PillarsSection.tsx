@@ -137,6 +137,10 @@ export function PillarsSection({ t }: PillarsSectionProps) {
                 <span className="w-2 h-2 rounded-full bg-[#4A82CC] mt-2 flex-shrink-0" />
                 <p className="text-[12px] text-[#5A5F6B] leading-[1.6]" dangerouslySetInnerHTML={{ __html: t.p3_i4 }} />
               </div>
+              <div className="flex gap-3 items-start">
+                <span className="w-2 h-2 rounded-full bg-[#4A82CC] mt-2 flex-shrink-0" />
+                <p className="text-[12px] text-[#5A5F6B] leading-[1.6]" dangerouslySetInnerHTML={{ __html: t.p3_i5 }} />
+              </div>
             </div>
           </div>
 

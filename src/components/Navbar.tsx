@@ -108,7 +108,7 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
               {t.nav_modules}
             </button>
             <button onClick={() => handleLinkClick('#voucher')} className="text-[13px] text-[#5A5F6B] font-bold hover:text-[#1B3A7A] transition-colors cursor-pointer">
-              Voucher System
+              {lang === 'id' ? 'Voucher Promosi' : 'Promotional Vouchers'}
             </button>
             <button onClick={() => handleLinkClick('#pricing')} className="text-[13px] text-[#5A5F6B] font-bold hover:text-[#1B3A7A] transition-colors cursor-pointer">
               {t.nav_pricing}
@@ -227,7 +227,7 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
               onClick={() => handleLinkClick('#voucher')}
               className="text-left w-full text-[14px] font-bold text-[#5A5F6B] py-2 border-b border-[#F4F6FA] hover:text-[#1B3A7A]"
             >
-              Voucher System
+              {lang === 'id' ? 'Voucher Promosi' : 'Promotional Vouchers'}
             </button>
             <button
               onClick={() => handleLinkClick('#pricing')}

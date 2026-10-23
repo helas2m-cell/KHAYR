@@ -67,7 +67,7 @@ export function Footer({ t, onNavigate }: FooterProps) {
               {t.footer_f1_2}
             </a>
             <a href="#voucher" onClick={(e) => handleScrollToSection('#voucher', e)} className="text-[12px] text-white/40 hover:text-white transition-colors font-medium">
-              Voucher System
+              {isId ? 'Voucher Promosi' : 'Promotional Vouchers'}
             </a>
             <a href="#contact" onClick={(e) => handleScrollToSection('#contact', e)} className="text-[12px] text-white/40 hover:text-white transition-colors font-medium">
               {t.footer_f1_4}
