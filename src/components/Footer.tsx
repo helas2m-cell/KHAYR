@@ -130,19 +130,17 @@ export function Footer({ t, onNavigate }: FooterProps) {
 
           <div className="flex flex-wrap items-center gap-3.5">
             <img
-              src="https://lh3.googleusercontent.com/d/1e6Z49OhtiJvkBjsuYiOIc7t2Oeml-yqF"
-              alt="Certifications Logo"
+              src="/assets/aistudio/KOMDIGI_and_PSE_with_white_Logos_on_Transparent_Background_27084cb2.png"
+              alt="KOMDIGI & PSE Lingkup Privat"
               className="h-[51px] w-auto object-contain"
-              referrerPolicy="no-referrer"
             />
 
-            {/* SATUSEHAT Integration Badge Recreated */}
-            <div className="flex items-center gap-3 bg-white/8 border border-white/18 rounded-[10px] padding px-3.5 py-1.5 select-none">
+            {/* SATUSEHAT Integration Badge */}
+            <div className="flex items-center gap-3 bg-white/8 border border-white/18 rounded-[10px] px-3.5 py-1.5 select-none">
               <img
-                src="https://lh3.googleusercontent.com/d/1WxyAoEc1mn-wvPyXXrMNFdx_LEOWKj7x"
-                alt="SatuSehat Logo"
-                className="h-[51px] w-auto object-contain"
-                referrerPolicy="no-referrer"
+                src="/assets/aistudio/SATUSEHAT_White_Logo_on_Transparent_Background_3bea9b8f.png"
+                alt="SATUSEHAT Logo"
+                className="h-[38px] md:h-[42px] w-auto object-contain"
               />
             </div>
           </div>
