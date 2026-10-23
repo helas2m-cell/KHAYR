@@ -49,12 +49,12 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
   const [previewSuccessMsg, setPreviewSuccessMsg] = useState<boolean>(false);
 
   // Calculate Base Cost according to PDF rules:
-  // 1 kamar/kursi: Rp100.000
-  // 2 kamar/kursi: Rp175.000
-  // 3 kamar/kursi: Rp225.000
-  // 4 kamar/kursi: Rp275.000
-  // 5 kamar/kursi: Rp325.000
-  // Setiap tambahan kamar/kursi setelah yang pertama menambah biaya dasar Rp50.000 per bulan
+  // 1 kamar(kursi) perawatan: Rp100.000
+  // 2 kamar(kursi) perawatan: Rp175.000
+  // 3 kamar(kursi) perawatan: Rp225.000
+  // 4 kamar(kursi) perawatan: Rp275.000
+  // 5 kamar(kursi) perawatan: Rp325.000
+  // Setiap tambahan kamar(kursi) perawatan setelah yang pertama menambah biaya dasar Rp50.000 per bulan
   const calculateBaseCost = (chairs: number): number => {
     if (chairs <= 1) return 100000;
     if (chairs === 2) return 175000;
@@ -80,7 +80,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
 
   // WhatsApp quick consultation link
   const waConsultMsg = isId
-    ? `Halo KHAYR OS, saya ingin konsultasi sistem berlangganan untuk ${chairCount} kamar/kursi perawatan dan perkiraan ${invoiceCount} invoice per bulan.`
+    ? `Halo KHAYR OS, saya ingin konsultasi sistem berlangganan untuk ${chairCount} kamar(kursi) perawatan dan perkiraan ${invoiceCount} invoice per bulan.`
     : `Hello KHAYR OS, I would like to consult the subscription plan for ${chairCount} dental rooms/chairs and approx ${invoiceCount} invoices per month.`;
   const waUrl = `https://wa.me/6281932415455?text=${encodeURIComponent(waConsultMsg)}`;
 
@@ -88,11 +88,11 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
   const faqItems = isId ? [
     {
       q: "Apakah saya masih membayar biaya bulanan tetap?",
-      a: "Tidak hanya biaya dasar bulanan. Total biaya terdiri atas biaya dasar berdasarkan jumlah kamar/kursi perawatan dan biaya penggunaan sebesar Rp3.000 untuk setiap invoice yang diterbitkan."
+      a: "Tidak hanya biaya dasar bulanan. Total biaya terdiri atas biaya dasar berdasarkan jumlah kamar(kursi) perawatan dan biaya penggunaan sebesar Rp3.000 untuk setiap invoice yang diterbitkan."
     },
     {
       q: "Bagaimana jika jumlah invoice klinik sedikit?",
-      a: "Biaya penggunaan akan lebih rendah karena dihitung berdasarkan jumlah invoice yang diterbitkan. Namun, biaya dasar bulanan tetap berlaku sesuai jumlah kamar/kursi terdaftar."
+      a: "Biaya penggunaan akan lebih rendah karena dihitung berdasarkan jumlah invoice yang diterbitkan. Namun, biaya dasar bulanan tetap berlaku sesuai jumlah kamar(kursi) perawatan terdaftar."
     },
     {
       q: "Apakah saya harus melakukan top-up setiap bulan?",
@@ -104,7 +104,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
     },
     {
       q: "Bagaimana cara memperkirakan biaya bulanan klinik saya?",
-      a: "Hitung biaya dasar sesuai jumlah kamar/kursi, lalu tambahkan Rp3.000 dikalikan jumlah invoice yang diperkirakan akan diterbitkan dalam satu bulan."
+      a: "Hitung biaya dasar sesuai jumlah kamar(kursi) perawatan, lalu tambahkan Rp3.000 dikalikan jumlah invoice yang diperkirakan akan diterbitkan dalam satu bulan."
     }
   ] : [
     {
@@ -186,7 +186,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                     {isId ? 'Komponen Pertama' : 'Component 1'}
                   </span>
                   <h2 className="text-xl sm:text-[22px] font-black text-[#141928] leading-tight">
-                    {isId ? 'Biaya Dasar Bulanan Sesuai Kamar/Kursi' : 'Monthly Base Fee by Rooms/Chairs'}
+                    {isId ? 'Biaya Dasar Bulanan Sesuai Kamar(kursi) Perawatan' : 'Monthly Base Fee by Rooms/Chairs'}
                   </h2>
                 </div>
               </div>
@@ -202,38 +202,38 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                 <table className="w-full text-left text-[13px]">
                   <thead className="bg-[#EEF2FB] text-[#1B3A7A] font-extrabold uppercase text-[11px] tracking-wider border-b border-[#DDE3EE]">
                     <tr>
-                      <th className="py-3 px-4">{isId ? 'Jumlah Kamar / Kursi' : 'Rooms / Chairs'}</th>
+                      <th className="py-3 px-4">{isId ? 'Jumlah Kamar(kursi) Perawatan' : 'Rooms / Chairs'}</th>
                       <th className="py-3 px-4 text-right">{isId ? 'Biaya Dasar per Bulan' : 'Base Fee / Month'}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#E6EAF2] font-semibold text-[#141928]">
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
-                        <Building2 size={15} className="text-[#3D8B7A]" /> 1 kamar/kursi
+                        <Building2 size={15} className="text-[#3D8B7A]" /> 1 kamar(kursi) perawatan
                       </td>
                       <td className="py-2.5 px-4 text-right font-bold text-[#1B3A7A]">Rp100.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
-                        <Building2 size={15} className="text-[#3D8B7A]" /> 2 kamar/kursi
+                        <Building2 size={15} className="text-[#3D8B7A]" /> 2 kamar(kursi) perawatan
                       </td>
                       <td className="py-2.5 px-4 text-right font-bold text-[#1B3A7A]">Rp175.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
-                        <Building2 size={15} className="text-[#3D8B7A]" /> 3 kamar/kursi
+                        <Building2 size={15} className="text-[#3D8B7A]" /> 3 kamar(kursi) perawatan
                       </td>
                       <td className="py-2.5 px-4 text-right font-bold text-[#1B3A7A]">Rp225.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
-                        <Building2 size={15} className="text-[#3D8B7A]" /> 4 kamar/kursi
+                        <Building2 size={15} className="text-[#3D8B7A]" /> 4 kamar(kursi) perawatan
                       </td>
                       <td className="py-2.5 px-4 text-right font-bold text-[#1B3A7A]">Rp275.000</td>
                     </tr>
                     <tr className="hover:bg-white transition-colors">
                       <td className="py-2.5 px-4 flex items-center gap-2">
-                        <Building2 size={15} className="text-[#3D8B7A]" /> 5 kamar/kursi
+                        <Building2 size={15} className="text-[#3D8B7A]" /> 5 kamar(kursi) perawatan
                       </td>
                       <td className="py-2.5 px-4 text-right font-bold text-[#1B3A7A]">Rp325.000</td>
                     </tr>
@@ -246,7 +246,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
               <CheckCircle2 size={15} className="shrink-0 text-[#3D8B7A]" />
               <span>
                 {isId 
-                  ? 'Setiap tambahan kamar/kursi setelah yang pertama menambah biaya dasar Rp50.000 per bulan.'
+                  ? 'Setiap tambahan kamar(kursi) perawatan setelah yang pertama menambah biaya dasar Rp50.000 per bulan.'
                   : 'Each additional room/chair beyond the first adds Rp50,000 per month to the base fee.'}
               </span>
             </div>
@@ -800,7 +800,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
             </h2>
             <p className="text-[14px] sm:text-[15px] text-[#5A5F6B] leading-relaxed font-medium">
               {isId 
-                ? 'Total biaya bulanan dapat diperkirakan dengan menjumlahkan biaya dasar berdasarkan jumlah kamar/kursi dan biaya penggunaan berdasarkan jumlah invoice yang diterbitkan.' 
+                ? 'Total biaya bulanan dapat diperkirakan dengan menjumlahkan biaya dasar berdasarkan jumlah kamar(kursi) perawatan dan biaya penggunaan berdasarkan jumlah invoice yang diterbitkan.' 
                 : 'Total monthly expenditure can be estimated by combining the base fee per room/chair and usage fee per invoice issued.'}
             </p>
           </div>
@@ -814,7 +814,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
               <table className="w-full text-left text-[13.5px]">
                 <thead className="bg-[#1B3A7A] text-white font-extrabold uppercase text-[11px] tracking-wider">
                   <tr>
-                    <th className="py-3.5 px-5">{isId ? 'Kamar / Kursi' : 'Rooms / Chairs'}</th>
+                    <th className="py-3.5 px-5">{isId ? 'Kamar(kursi) Perawatan' : 'Rooms / Chairs'}</th>
                     <th className="py-3.5 px-5">{isId ? 'Biaya Dasar' : 'Base Fee'}</th>
                     <th className="py-3.5 px-5">{isId ? 'Estimasi Invoice / Bulan' : 'Estimated Invoices / Mo'}</th>
                     <th className="py-3.5 px-5 text-right font-black">{isId ? 'Total Estimasi / Bulan' : 'Total Estimated / Mo'}</th>
@@ -822,25 +822,25 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                 </thead>
                 <tbody className="divide-y divide-[#E6EAF2] font-semibold text-[#141928] bg-white">
                   <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3 px-5 font-bold">1 kamar/kursi</td>
+                    <td className="py-3 px-5 font-bold">1 kamar(kursi) perawatan</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">Rp100.000</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">50 invoice (Rp150.000)</td>
                     <td className="py-3 px-5 text-right font-black text-[#1B3A7A] text-base">Rp250.000</td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3 px-5 font-bold">2 kamar/kursi</td>
+                    <td className="py-3 px-5 font-bold">2 kamar(kursi) perawatan</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">Rp175.000</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">80 invoice (Rp240.000)</td>
                     <td className="py-3 px-5 text-right font-black text-[#1B3A7A] text-base">Rp415.000</td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3 px-5 font-bold">3 kamar/kursi</td>
+                    <td className="py-3 px-5 font-bold">3 kamar(kursi) perawatan</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">Rp225.000</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">100 invoice (Rp300.000)</td>
                     <td className="py-3 px-5 text-right font-black text-[#1B3A7A] text-base">Rp525.000</td>
                   </tr>
                   <tr className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3 px-5 font-bold">4 kamar/kursi</td>
+                    <td className="py-3 px-5 font-bold">4 kamar(kursi) perawatan</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">Rp275.000</td>
                     <td className="py-3 px-5 text-[#5A5F6B]">200 invoice (Rp600.000)</td>
                     <td className="py-3 px-5 text-right font-black text-[#1B3A7A] text-base">Rp875.000</td>
@@ -850,7 +850,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
             </div>
             <p className="text-[12px] text-[#8A8F9A] italic mt-2.5">
               {isId 
-                ? '* Contoh di atas merupakan simulasi berdasarkan tarif yang dicontohkan, bukan jumlah minimum top-up atau saldo yang harus diisi. Biaya sebenarnya mengikuti jumlah kamar/kursi terdaftar dan jumlah invoice yang benar-benar diterbitkan.'
+                ? '* Contoh di atas merupakan simulasi berdasarkan tarif yang dicontohkan, bukan jumlah minimum top-up atau saldo yang harus diisi. Biaya sebenarnya mengikuti jumlah kamar(kursi) perawatan terdaftar dan jumlah invoice yang benar-benar diterbitkan.'
                 : '* The above table illustrates simulation examples, not a mandatory minimum top-up. Actual fees reflect registered chair capacity and actual invoices issued.'}
             </p>
           </div>
@@ -880,10 +880,10 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <label className="text-xs font-bold uppercase tracking-wider text-[#141928]">
-                      {isId ? 'Jumlah Kamar / Kursi Perawatan:' : 'Number of Treatment Rooms / Chairs:'}
+                      {isId ? 'Jumlah Kamar(kursi) Perawatan:' : 'Number of Treatment Rooms / Chairs:'}
                     </label>
                     <span className="text-sm font-black text-[#1B3A7A] bg-[#EEF2FB] px-3 py-1 rounded-md">
-                      {chairCount} {isId ? 'Kamar/Kursi' : 'Rooms/Chairs'}
+                      {chairCount} {isId ? 'kamar(kursi) perawatan' : 'Rooms/Chairs'}
                     </span>
                   </div>
                   
@@ -962,7 +962,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   
                   <div className="space-y-2.5 py-3 border-b border-[#E6EAF2] text-[13px]">
                     <div className="flex justify-between items-center text-[#5A5F6B]">
-                      <span>{isId ? `Biaya Dasar (${chairCount} Kamar/Kursi)` : `Base Fee (${chairCount} Chairs)`}</span>
+                      <span>{isId ? `Biaya Dasar (${chairCount} kamar(kursi) perawatan)` : `Base Fee (${chairCount} Chairs)`}</span>
                       <span className="font-bold text-[#141928]">{formatRupiah(baseCost)}</span>
                     </div>
                     <div className="flex justify-between items-center text-[#5A5F6B]">
@@ -1093,7 +1093,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                 </h3>
                 <p className="text-[13px] text-[#5A5F6B] leading-relaxed font-medium">
                   {isId 
-                    ? 'Pemilik dan pengelola klinik dapat memperkirakan biaya dengan akurat berdasarkan jumlah kamar/kursi dan volume invoice bulanan.'
+                    ? 'Pemilik dan pengelola klinik dapat memperkirakan biaya dengan akurat berdasarkan jumlah kamar(kursi) perawatan dan volume invoice bulanan.'
                     : 'Clinic owners and finance managers can accurately forecast overhead costs based on chair count and invoice projection.'}
                 </p>
               </div>

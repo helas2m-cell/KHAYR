@@ -163,22 +163,13 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
                 </button>
               </div>
             ) : (
-              /* Login & Request Demo buttons */
-              <>
-                <button
-                  onClick={() => setIsLoginOpen(true)}
-                  className="px-[16px] py-[10px] rounded-[8px] text-[13px] font-bold text-[#1B3A7A] hover:bg-[#EEF2FB] hover:text-[#112660] transition-colors cursor-pointer"
-                >
-                  {t.nav_login}
-                </button>
-
-                <button
-                  onClick={() => handleLinkClick('#contact')}
-                  className="px-[20px] py-[10px] bg-[#1B3A7A] border border-[#1B3A7A] rounded-[8px] text-[13px] font-bold text-white hover:bg-[#112660] active:scale-95 transition-all cursor-pointer"
-                >
-                  {t.nav_requestdemo}
-                </button>
-              </>
+              /* Login button */
+              <button
+                onClick={() => setIsLoginOpen(true)}
+                className="px-[16px] py-[10px] rounded-[8px] text-[13px] font-bold text-[#1B3A7A] hover:bg-[#EEF2FB] hover:text-[#112660] transition-colors cursor-pointer"
+              >
+                {t.nav_login}
+              </button>
             )}
           </div>
 
@@ -288,12 +279,6 @@ export function Navbar({ lang, setLang, t, loggedInUser, setLoggedInUser, curren
                   className="w-full text-center py-[10.5px] border border-slate-300 bg-slate-50 hover:bg-slate-100 rounded-[8px] text-[13px] font-bold text-[#1B3A7A]"
                 >
                   {t.nav_login}
-                </button>
-                <button
-                  onClick={() => handleLinkClick('#contact')}
-                  className="w-full text-center py-[10px] bg-[#1B3A7A] rounded-[8px] text-[13px] font-bold text-white hover:bg-[#112660]"
-                >
-                  {t.nav_requestdemo}
                 </button>
               </div>
             )}

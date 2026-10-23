@@ -541,7 +541,7 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
                 href="#contact"
                 className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#1B3A7A] hover:bg-slate-100 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
               >
-                <span>{isId ? 'Konsultasi Fitur Voucher' : 'Consult Voucher Feature'}</span>
+                <span>{isId ? 'Konsultasi Fitur Promosi' : 'Consult Promotion Features'}</span>
                 <ArrowRight size={16} />
               </a>
               

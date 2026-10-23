@@ -13,7 +13,6 @@ import { PlatformSection } from './components/PlatformSection';
 import { PillarsSection } from './components/PillarsSection';
 import { ModulesSection } from './components/ModulesSection';
 import { VoucherSection } from './components/VoucherSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
 import { PricingPage } from './components/PricingPage';
 import { SecurityBand } from './components/SecurityBand';
 import { ContactSection } from './components/ContactSection';
@@ -115,7 +114,6 @@ export default function App() {
             <PillarsSection t={t} />
             <ModulesSection t={t} />
             <VoucherSection t={t} lang={lang} />
-            <TestimonialsSection t={t} />
             <SecurityBand t={t} />
             <ContactSection t={t} preselectedClinicSize={preselectedClinicSize} />
           </>

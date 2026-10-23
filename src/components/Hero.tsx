@@ -11,6 +11,20 @@ interface HeroProps {
   t: TranslationSet;
 }
 
+function renderFormattedText(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={index} className="font-bold text-white">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
 export function Hero({ t }: HeroProps) {
   // Simple periodic live dynamic values to simulate live activity
   const [livePulse, setLivePulse] = useState(true);
@@ -72,8 +86,8 @@ export function Hero({ t }: HeroProps) {
             </h1>
 
             {/* Subtext description */}
-            <p className="text-[15px] sm:text-[16px] text-white/75 leading-[1.78] max-w-[500px] mb-8 font-medium">
-              {t.hero_sub}
+            <p className="text-[15px] sm:text-[16px] text-white/75 leading-[1.78] max-w-[540px] mb-8 font-medium whitespace-pre-line text-left">
+              {renderFormattedText(t.hero_sub)}
             </p>
 
             {/* Action CTA row */}

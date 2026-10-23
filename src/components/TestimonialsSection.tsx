@@ -31,7 +31,6 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
 
         {/* Testimonials 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
           {/* Testi 1 */}
           <motion.div
             whileHover={{ y: -4, boxShadow: "0 10px 36px rgba(27,58,122,0.06)" }}
@@ -97,7 +96,6 @@ export function TestimonialsSection({ t }: TestimonialsSectionProps) {
               </div>
             </div>
           </motion.div>
-
         </div>
 
       </div>
