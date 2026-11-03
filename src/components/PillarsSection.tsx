@@ -146,6 +146,18 @@ export function PillarsSection({ t }: PillarsSectionProps) {
 
         </div>
 
+        {/* Bottom Feature Illustration */}
+        <div className="mt-14 max-w-5xl mx-auto">
+          <div className="rounded-[20px] overflow-hidden border border-[#DDE3EE] shadow-md bg-[#F4F6FA]">
+            <img
+              src="/assets/aistudio/Transform_Your_Dental_Practice_Today_KHAYR_c3e60a4f.jfif"
+              alt={t.pillars_title}
+              className="w-full h-auto object-contain block"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
       </div>
     </section>
   );
