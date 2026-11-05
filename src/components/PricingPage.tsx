@@ -26,7 +26,8 @@ import {
   Check,
   QrCode
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { TiltShowcase } from './MotionPrimitives';
 
 interface PricingPageProps {
   t: TranslationSet;
@@ -151,7 +152,12 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
         </div>
 
         {/* 1. Header Narasi PDF */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-4xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-1.5 bg-[#EEF2FB] border border-[#1B3A7A]/15 text-[#1B3A7A] px-4 py-1.5 rounded-full text-[10.5px] font-extrabold uppercase tracking-[1.5px] mb-4">
             <Sparkles size={13} className="text-[#1B3A7A]" />
             {isId ? 'SISTEM BERLANGGANAN • APLIKASI OPERASIONAL KLINIK GIGI' : 'SUBSCRIPTION SYSTEM • DENTAL CLINIC OS'}
@@ -169,13 +175,20 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
               ? 'Setiap klinik gigi memiliki kapasitas, jumlah pasien, dan aktivitas operasional yang berbeda. Karena itu, kami menghadirkan sistem berlangganan aplikasi operasional klinik gigi dengan pendekatan yang lebih fleksibel. Biaya berlangganan menggabungkan biaya dasar bulanan berdasarkan jumlah kamar atau kursi perawatan dengan biaya penggunaan berdasarkan setiap invoice yang diterbitkan melalui aplikasi.'
               : 'Every dental clinic has unique capacity, patient volume, and operational cadence. Therefore, we present a subscription system with a flexible, transparent approach combining a monthly base fee by room/chair count and a usage fee per invoice issued.'}
           </p>
-        </div>
+        </motion.div>
 
         {/* 2. Dua Komponen Biaya (2 Pillars Grid) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           
           {/* Komponen 1: Biaya Dasar Bulanan */}
-          <div className="bg-white rounded-[20px] border-2 border-[#DDE3EE] p-8 sm:p-9 shadow-sm hover:border-[#1B3A7A]/30 transition-all flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4 }}
+            className="bg-white rounded-[20px] border-2 border-[#DDE3EE] p-8 sm:p-9 shadow-sm hover:border-[#1B3A7A]/30 transition-all flex flex-col justify-between"
+          >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg shrink-0">
@@ -250,10 +263,17 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   : 'Each additional room/chair beyond the second adds Rp50,000 per month to the base fee.'}
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Komponen 2: Biaya Penggunaan Invoice */}
-          <div className="bg-white rounded-[20px] border-2 border-[#DDE3EE] p-8 sm:p-9 shadow-sm hover:border-[#3D8B7A]/40 transition-all flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -4 }}
+            className="bg-white rounded-[20px] border-2 border-[#DDE3EE] p-8 sm:p-9 shadow-sm hover:border-[#3D8B7A]/40 transition-all flex flex-col justify-between"
+          >
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-[#E6F5F2] text-[#3D8B7A] flex items-center justify-center font-black text-lg shrink-0">
@@ -328,7 +348,7 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   : 'Calculated at Rp4,000 per invoice; excludes the monthly base fee.'}
               </span>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -534,22 +554,23 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
               </div>
 
               {/* Mockup Window Frame - Dikecilkan 40% (max-w-[620px] mx-auto) */}
-              <div className="max-w-[620px] mx-auto bg-[#FAFBFD] rounded-2xl border-2 border-[#DDE3EE] shadow-sm overflow-hidden">
-                {/* Window top bar */}
-                <div className="bg-[#F1F4F9] border-b border-[#DDE3EE] px-3.5 py-2 flex items-center justify-between select-none">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-[#EF4444]/80" />
-                    <div className="w-2 h-2 rounded-full bg-[#F59E0B]/80" />
-                    <div className="w-2 h-2 rounded-full bg-[#10B981]/80" />
-                    <span className="text-[10px] font-bold text-[#5A5F6B] ml-2">KHAYR OS • Top-Up Kuota</span>
+              <TiltShowcase maxTilt={2.5} float={true} floatAmplitude={4} floatDuration={6.5} shimmer={true} className="max-w-[620px] mx-auto">
+                <div className="bg-[#FAFBFD] rounded-2xl border-2 border-[#DDE3EE] shadow-sm overflow-hidden">
+                  {/* Window top bar */}
+                  <div className="bg-[#F1F4F9] border-b border-[#DDE3EE] px-3.5 py-2 flex items-center justify-between select-none">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-[#EF4444]/80" />
+                      <div className="w-2 h-2 rounded-full bg-[#F59E0B]/80" />
+                      <div className="w-2 h-2 rounded-full bg-[#10B981]/80" />
+                      <span className="text-[10px] font-bold text-[#5A5F6B] ml-2">KHAYR OS • Top-Up Kuota</span>
+                    </div>
+                    <span className="text-[9.5px] font-bold text-[#8A8F9A] uppercase tracking-wider">
+                      {isId ? 'Modul Deposit Saldo' : 'Deposit Module'}
+                    </span>
                   </div>
-                  <span className="text-[9.5px] font-bold text-[#8A8F9A] uppercase tracking-wider">
-                    {isId ? 'Modul Deposit Saldo' : 'Deposit Module'}
-                  </span>
-                </div>
 
-                {/* Content Area - EXACT RECREATION OF USER'S UPLOADED IMAGE (SCALED DOWN 40%) */}
-                <div className="p-4 sm:p-5.5 bg-white font-sans">
+                  {/* Content Area - EXACT RECREATION OF USER'S UPLOADED IMAGE (SCALED DOWN 40%) */}
+                  <div className="p-4 sm:p-5.5 bg-white font-sans">
                   
                   {/* Title & subtitle from screenshot */}
                   <div className="mb-4">
@@ -763,18 +784,19 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                     </div>
                   )}
 
-                  {/* Tombol Buat Pembayaran from screenshot */}
-                  <button
-                    type="button"
-                    onClick={() => setPreviewSuccessMsg(true)}
-                    className="w-full py-2.5 bg-[#1B3A7A] hover:bg-[#152e63] text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer active:scale-98"
-                  >
-                    <span>Buat Pembayaran</span>
-                    <ArrowRight size={14} />
-                  </button>
+                    {/* Tombol Buat Pembayaran from screenshot */}
+                    <button
+                      type="button"
+                      onClick={() => setPreviewSuccessMsg(true)}
+                      className="w-full py-2.5 bg-[#1B3A7A] hover:bg-[#152e63] text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm transition-all cursor-pointer active:scale-98"
+                    >
+                      <span>Buat Pembayaran</span>
+                      <ArrowRight size={14} />
+                    </button>
 
+                  </div>
                 </div>
-              </div>
+              </TiltShowcase>
             </div>
           </div>
 
@@ -963,22 +985,60 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                   <div className="space-y-2.5 py-3 border-b border-[#E6EAF2] text-[13px]">
                     <div className="flex justify-between items-center text-[#5A5F6B]">
                       <span>{isId ? `Biaya Dasar (${chairCount} kamar(kursi) perawatan)` : `Base Fee (${chairCount} Chairs)`}</span>
-                      <span className="font-bold text-[#141928]">{formatRupiah(baseCost)}</span>
+                      <motion.span
+                        key={baseCost}
+                        initial={{ opacity: 0.4, y: -3 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="font-bold text-[#141928] tabular-nums"
+                      >
+                        {formatRupiah(baseCost)}
+                      </motion.span>
                     </div>
                     <div className="flex justify-between items-center text-[#5A5F6B]">
                       <span>{isId ? `Biaya Invoice (${invoiceCount} × Rp4.000)` : `Invoice Fee (${invoiceCount} × Rp4,000)`}</span>
-                      <span className="font-bold text-[#141928]">{formatRupiah(invoiceCost)}</span>
+                      <motion.span
+                        key={invoiceCost}
+                        initial={{ opacity: 0.4, y: -3 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="font-bold text-[#141928] tabular-nums"
+                      >
+                        {formatRupiah(invoiceCost)}
+                      </motion.span>
                     </div>
                   </div>
 
-                  <div className="pt-4 mb-6">
+                  {/* Animated Breakdown Progress Bar */}
+                  <div className="pt-3">
+                    <div className="h-2 w-full bg-[#EEF2FB] rounded-full overflow-hidden flex">
+                      <motion.div
+                        className="bg-[#1B3A7A] h-full"
+                        animate={{ width: `${Math.round((baseCost / totalCost) * 100)}%` }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+                      />
+                      <motion.div
+                        className="bg-[#3D8B7A] h-full"
+                        animate={{ width: `${Math.round((invoiceCost / totalCost) * 100)}%` }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-3 mb-6">
                     <span className="text-xs font-bold text-[#8A8F9A] block mb-0.5">
                       {isId ? 'Total Estimasi Biaya Berlangganan:' : 'Total Estimated Subscription Cost:'}
                     </span>
                     <div className="flex items-baseline gap-1">
-                      <span className="text-3xl sm:text-4xl font-black text-[#1B3A7A] tracking-tight">
+                      <motion.span
+                        key={totalCost}
+                        initial={{ opacity: 0.5, scale: 0.96 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ type: 'spring', stiffness: 380, damping: 25 }}
+                        className="text-3xl sm:text-4xl font-black text-[#1B3A7A] tracking-tight tabular-nums"
+                      >
                         {formatRupiah(totalCost)}
-                      </span>
+                      </motion.span>
                       <span className="text-xs font-semibold text-[#8A8F9A]">
                         {isId ? '/ bulan' : '/ month'}
                       </span>
@@ -1134,11 +1194,21 @@ export function PricingPage({ lang, onSelectPlan, onBackToHome }: PricingPagePro
                     </span>
                   </button>
 
-                  {isOpen && (
-                    <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-[13.5px] leading-relaxed text-[#5A5F6B] font-medium bg-[#EEF2FB]/20">
-                      {item.a}
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-6 pb-5 pt-1 border-t border-slate-100 text-[13.5px] leading-relaxed text-[#5A5F6B] font-medium bg-[#EEF2FB]/20">
+                          {item.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}

@@ -18,7 +18,13 @@ export function PlatformSection({ t }: PlatformSectionProps) {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Intro headers */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="text-[11px] font-extrabold text-[#4E9E8F] tracking-[2px] uppercase mb-3">
             {t.plat_label}
           </div>
@@ -28,17 +34,21 @@ export function PlatformSection({ t }: PlatformSectionProps) {
           <p className="text-[15px] sm:text-[16px] text-[#5A5F6B] leading-[1.78] font-normal">
             {t.plat_sub}
           </p>
-        </div>
+        </motion.div>
 
         {/* Roles 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Card 1: Doctor / Nurse */}
           <motion.div
-            whileHover={{ y: -6, boxShadow: "0 10px 36px rgba(27,58,122,0.1)" }}
-            className="bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, boxShadow: "0 14px 38px rgba(27,58,122,0.12)" }}
+            className="group bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
           >
-            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] flex items-center justify-center mb-4 text-[#1B3A7A]">
+            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] group-hover:bg-[#EEF2FB] group-hover:scale-105 flex items-center justify-center mb-4 text-[#1B3A7A] transition-all duration-300">
               <Stethoscope className="w-6 h-6" strokeWidth={1.5} />
             </div>
             <h3 className="text-[14px] font-bold text-[#1B3A7A] mb-1.5">{t.role1_title}</h3>
@@ -52,10 +62,14 @@ export function PlatformSection({ t }: PlatformSectionProps) {
 
           {/* Card 2: Admin Staff */}
           <motion.div
-            whileHover={{ y: -6, boxShadow: "0 10px 36px rgba(27,58,122,0.1)" }}
-            className="bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, boxShadow: "0 14px 38px rgba(27,58,122,0.12)" }}
+            className="group bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
           >
-            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] flex items-center justify-center mb-4 text-[#1B3A7A]">
+            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] group-hover:bg-[#EEF2FB] group-hover:scale-105 flex items-center justify-center mb-4 text-[#1B3A7A] transition-all duration-300">
               <ClipboardCheck className="w-6 h-6" strokeWidth={1.5} />
             </div>
             <h3 className="text-[14px] font-bold text-[#1B3A7A] mb-1.5">{t.role2_title}</h3>
@@ -69,10 +83,14 @@ export function PlatformSection({ t }: PlatformSectionProps) {
 
           {/* Card 3: Patient */}
           <motion.div
-            whileHover={{ y: -6, boxShadow: "0 10px 36px rgba(27,58,122,0.1)" }}
-            className="bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.19, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, boxShadow: "0 14px 38px rgba(27,58,122,0.12)" }}
+            className="group bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
           >
-            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] flex items-center justify-center mb-4 text-[#1B3A7A]">
+            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] group-hover:bg-[#EEF2FB] group-hover:scale-105 flex items-center justify-center mb-4 text-[#1B3A7A] transition-all duration-300">
               <HeartHandshake className="w-6 h-6" strokeWidth={1.5} />
             </div>
             <h3 className="text-[14px] font-bold text-[#1B3A7A] mb-1.5">{t.role3_title}</h3>
@@ -86,10 +104,14 @@ export function PlatformSection({ t }: PlatformSectionProps) {
 
           {/* Card 4: Owner / Manager */}
           <motion.div
-            whileHover={{ y: -6, boxShadow: "0 10px 36px rgba(27,58,122,0.1)" }}
-            className="bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, boxShadow: "0 14px 38px rgba(27,58,122,0.12)" }}
+            className="group bg-white border-2 border-[#DDE3EE] hover:border-[#4A82CC] rounded-[14px] p-6 text-center transition-all duration-300 flex flex-col items-center"
           >
-            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] flex items-center justify-center mb-4 text-[#1B3A7A]">
+            <div className="w-[54px] h-[54px] rounded-full border-2 border-[#1B3A7A] group-hover:bg-[#EEF2FB] group-hover:scale-105 flex items-center justify-center mb-4 text-[#1B3A7A] transition-all duration-300">
               <TrendingUp className="w-6 h-6" strokeWidth={1.5} />
             </div>
             <h3 className="text-[14px] font-bold text-[#1B3A7A] mb-1.5">{t.role4_title}</h3>

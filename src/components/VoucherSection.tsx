@@ -17,7 +17,8 @@ import {
   BadgePercent,
   Check
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { TiltShowcase } from './MotionPrimitives';
 
 interface VoucherSectionProps {
   t: TranslationSet;
@@ -43,7 +44,13 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* 1. Headline & Subheadline Utama */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-4xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 bg-[#EEF2FB] border border-[#1B3A7A]/15 text-[#1B3A7A] px-4 py-1.5 rounded-full text-[11px] font-extrabold uppercase tracking-[2px] mb-4.5 shadow-xs">
             <Sparkles size={13} className="text-[#1B3A7A]" />
             KHAYR VOUCHER SYSTEM
@@ -66,18 +73,22 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               ? 'KHAYR Voucher Promotion membantu klinik gigi membuat voucher promosi untuk layanan tertentu, menentukan periode promosi, dan mendistribusikannya melalui aplikasi mitra. Klinik tidak dikenakan biaya untuk membuat atau menerbitkan voucher. Biaya promosi baru dikenakan ketika voucher berhasil digunakan oleh pasien untuk mendapatkan layanan di klinik.'
               : 'KHAYR Voucher Promotion empowers dental clinics to design custom service promotions, set active periods, and distribute them across premier partner apps with zero upfront issuing fees. You only pay when a patient successfully redeems the voucher at your clinic.'}
           </p>
-        </div>
+        </motion.div>
 
         {/* 2. Tiga Keunggulan Utama */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 items-stretch">
           
           {/* Keunggulan 1 */}
           <motion.div 
-            whileHover={{ y: -4 }}
-            className="bg-[#FAFBFD] rounded-[20px] border-2 border-[#DDE3EE] p-8 flex flex-col justify-between hover:border-[#1B3A7A] transition-all shadow-sm group"
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -6 }}
+            className="bg-[#FAFBFD] rounded-[20px] border-2 border-[#DDE3EE] p-8 flex flex-col justify-between hover:border-[#1B3A7A] hover:shadow-[0_18px_40px_rgba(15,33,80,0.08)] transition-all shadow-sm group"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black mb-5 group-hover:scale-105 transition-transform shadow-xs">
+              <div className="w-12 h-12 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <Gift size={24} />
               </div>
               <span className="text-[10.5px] font-extrabold text-[#8A8F9A] uppercase tracking-[1.5px] block mb-1.5">
@@ -104,15 +115,19 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
 
           {/* Keunggulan 2 */}
           <motion.div 
-            whileHover={{ y: -4 }}
-            className="bg-[#FAFBFD] rounded-[20px] border-2 border-[#1B3A7A] p-8 flex flex-col justify-between transition-all shadow-md group relative"
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -6 }}
+            className="bg-[#FAFBFD] rounded-[20px] border-2 border-[#1B3A7A] p-8 flex flex-col justify-between hover:shadow-[0_20px_45px_rgba(27,58,122,0.12)] transition-all shadow-md group relative"
           >
             <div className="absolute top-0 right-8 -translate-y-1/2 bg-[#1B3A7A] text-white text-[9.5px] font-black uppercase px-3 py-1 rounded-full tracking-wider shadow-sm">
               {isId ? 'Jaringan 5 Mitra' : '5 Partner Networks'}
             </div>
 
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#E6F5F2] text-[#3D8B7A] flex items-center justify-center font-black mb-5 group-hover:scale-105 transition-transform shadow-xs">
+              <div className="w-12 h-12 rounded-xl bg-[#E6F5F2] text-[#3D8B7A] flex items-center justify-center font-black mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <Users size={24} />
               </div>
               <span className="text-[10.5px] font-extrabold text-[#3D8B7A] uppercase tracking-[1.5px] block mb-1.5">
@@ -130,14 +145,16 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
                   : 'Your dental vouchers are distributed across 5 major Indonesian digital ecosystems: Telkomsel, Indosat, AXISNET, XL, and AstraPay to attract high-intent new patients.'}
               </p>
 
-              <div className="mt-4 p-2.5 bg-white rounded-xl border border-[#E2E8F0] shadow-xs flex items-center justify-center">
-                <img 
-                  src="/assets/aistudio/Telcos_app_logo_59015ec6.jpg" 
-                  alt={isId ? "Aplikasi mitra: Telkomsel, Indosat, AXIS, XL, AstraPay" : "Partner apps: Telkomsel, Indosat, AXIS, XL, AstraPay"} 
-                  className="w-full h-auto max-h-28 object-contain rounded-lg"
-                  loading="lazy"
-                />
-              </div>
+              <TiltShowcase maxTilt={3} shimmer={true} className="mt-4">
+                <div className="p-2.5 bg-white rounded-xl border border-[#E2E8F0] shadow-xs flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/assets/aistudio/Telcos_app_logo_59015ec6.jpg" 
+                    alt={isId ? "Aplikasi mitra: Telkomsel, Indosat, AXIS, XL, AstraPay" : "Partner apps: Telkomsel, Indosat, AXIS, XL, AstraPay"} 
+                    className="w-full h-auto max-h-28 object-contain rounded-lg transition-transform duration-500 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </div>
+              </TiltShowcase>
             </div>
 
             <div className="pt-6 mt-6 border-t border-[#E6EAF2] flex items-center gap-2 text-xs font-bold text-[#3D8B7A]">
@@ -148,11 +165,15 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
 
           {/* Keunggulan 3 */}
           <motion.div 
-            whileHover={{ y: -4 }}
-            className="bg-[#FAFBFD] rounded-[20px] border-2 border-[#DDE3EE] p-8 flex flex-col justify-between hover:border-[#1B3A7A] transition-all shadow-sm group"
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            whileHover={{ y: -6 }}
+            className="bg-[#FAFBFD] rounded-[20px] border-2 border-[#DDE3EE] p-8 flex flex-col justify-between hover:border-[#1B3A7A] hover:shadow-[0_18px_40px_rgba(15,33,80,0.08)] transition-all shadow-sm group"
           >
             <div>
-              <div className="w-12 h-12 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black mb-5 group-hover:scale-105 transition-transform shadow-xs">
+              <div className="w-12 h-12 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black mb-5 group-hover:scale-110 transition-transform shadow-xs">
                 <TrendingUp size={24} />
               </div>
               <span className="text-[10.5px] font-extrabold text-[#8A8F9A] uppercase tracking-[1.5px] block mb-1.5">
@@ -180,7 +201,13 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
         </div>
 
         {/* 3. Deskripsi Fitur Terintegrasi & Ilustrasi Voucher Real-Time */}
-        <div className="bg-[#FAFBFD] rounded-[24px] border-2 border-[#DDE3EE] p-8 sm:p-12 mb-20 shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[#FAFBFD] rounded-[24px] border-2 border-[#DDE3EE] p-8 sm:p-12 mb-20 shadow-sm"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left: Penjelasan Detail */}
@@ -251,98 +278,134 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
             <div className="lg:col-span-5 flex flex-col justify-center">
               
               {/* Tab Selector Contoh Voucher */}
-              <div className="flex bg-[#E6EAF2] p-1 rounded-xl mb-4 text-xs font-bold select-none">
+              <div className="flex bg-[#E6EAF2] p-1 rounded-xl mb-4 text-xs font-bold select-none relative">
                 <button
                   type="button"
                   onClick={() => setActiveTabExample('discount')}
-                  className={`flex-1 py-2 rounded-lg transition-all cursor-pointer ${
+                  className={`flex-1 py-2 rounded-lg transition-colors cursor-pointer relative z-10 ${
                     activeTabExample === 'discount' 
-                      ? 'bg-white text-[#1B3A7A] shadow-xs' 
+                      ? 'text-[#1B3A7A]' 
                       : 'text-[#5A5F6B] hover:text-[#141928]'
                   }`}
                 >
-                  {isId ? 'Contoh A: Potongan Harga' : 'Example A: Discount'}
+                  {activeTabExample === 'discount' && (
+                    <motion.div
+                      layoutId="voucherTabIndicator"
+                      className="absolute inset-0 bg-white rounded-lg shadow-xs"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10">
+                    {isId ? 'Contoh A: Potongan Harga' : 'Example A: Discount'}
+                  </span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveTabExample('service')}
-                  className={`flex-1 py-2 rounded-lg transition-all cursor-pointer ${
+                  className={`flex-1 py-2 rounded-lg transition-colors cursor-pointer relative z-10 ${
                     activeTabExample === 'service' 
-                      ? 'bg-white text-[#1B3A7A] shadow-xs' 
+                      ? 'text-[#1B3A7A]' 
                       : 'text-[#5A5F6B] hover:text-[#141928]'
                   }`}
                 >
-                  {isId ? 'Contoh B: Layanan Tertentu' : 'Example B: Service'}
+                  {activeTabExample === 'service' && (
+                    <motion.div
+                      layoutId="voucherTabIndicator"
+                      className="absolute inset-0 bg-white rounded-lg shadow-xs"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative z-10">
+                    {isId ? 'Contoh B: Layanan Tertentu' : 'Example B: Service'}
+                  </span>
                 </button>
               </div>
 
-              {/* Voucher Card Mockup */}
-              <div className="bg-white rounded-2xl border-2 border-[#1B3A7A]/30 p-6 shadow-md relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-[#3D8B7A] text-white text-[9.5px] font-black uppercase px-3.5 py-1 rounded-bl-xl tracking-wider">
-                  {isId ? 'Voucher Aktif' : 'Active Voucher'}
-                </div>
+              {/* Voucher Card Mockup with 3D Tilt & Floating */}
+              <TiltShowcase maxTilt={3.2} float={true} floatAmplitude={4.5} floatDuration={6} shimmer={true}>
+                <div className="bg-white rounded-2xl border-2 border-[#1B3A7A]/30 p-6 shadow-md relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-[#3D8B7A] text-white text-[9.5px] font-black uppercase px-3.5 py-1 rounded-bl-xl tracking-wider">
+                    {isId ? 'Voucher Aktif' : 'Active Voucher'}
+                  </div>
 
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-bold">
-                    <BadgePercent size={18} />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-extrabold text-[#8A8F9A] uppercase tracking-wider block">
-                      KHAYR VOUCHER PROMOTION
-                    </span>
-                    <span className="text-xs font-bold text-[#141928]">
-                      {activeTabExample === 'discount' 
-                        ? (isId ? 'Voucher Diskon Perawatan' : 'Dental Treatment Discount') 
-                        : (isId ? 'Voucher Paket Perawatan' : 'Treatment Package Voucher')}
-                    </span>
-                  </div>
-                </div>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeTabExample}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-lg bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-bold">
+                          <BadgePercent size={18} />
+                        </div>
+                        <div>
+                          <span className="text-[10px] font-extrabold text-[#8A8F9A] uppercase tracking-wider block">
+                            KHAYR VOUCHER PROMOTION
+                          </span>
+                          <span className="text-xs font-bold text-[#141928]">
+                            {activeTabExample === 'discount' 
+                              ? (isId ? 'Voucher Diskon Perawatan' : 'Dental Treatment Discount') 
+                              : (isId ? 'Voucher Paket Perawatan' : 'Treatment Package Voucher')}
+                          </span>
+                        </div>
+                      </div>
 
-                {/* Offer value */}
-                <div className="bg-[#FAFBFD] border border-dashed border-[#1B3A7A]/30 rounded-xl p-4 my-3 text-center">
-                  <span className="text-[11px] font-bold text-[#5A5F6B] block">
-                    {activeTabExample === 'discount' 
-                      ? (isId ? 'Layanan Pembersihan Karang Gigi (Scaling)' : 'Scaling & Polishing Dental Service') 
-                      : (isId ? 'Paket Konsultasi + Pembersihan Karang Gigi' : 'Consultation + Dental Hygiene Package')}
-                  </span>
-                  <div className="text-2xl font-black text-[#1B3A7A] tracking-tight my-1">
-                    {activeTabExample === 'discount' ? 'POTONGAN HARGA 30%' : 'AKSES LAYANAN KHUSUS'}
-                  </div>
-                  <span className="text-[11px] font-mono font-bold bg-[#EEF2FB] px-3 py-1 rounded-md text-[#1B3A7A] inline-block tracking-widest mt-1">
-                    {activeTabExample === 'discount' ? 'KHAYR-SCALE-30' : 'KHAYR-DENTAL-PKG'}
-                  </span>
-                </div>
+                      {/* Offer value */}
+                      <div className="bg-[#FAFBFD] border border-dashed border-[#1B3A7A]/30 rounded-xl p-4 my-3 text-center">
+                        <span className="text-[11px] font-bold text-[#5A5F6B] block">
+                          {activeTabExample === 'discount' 
+                            ? (isId ? 'Layanan Pembersihan Karang Gigi (Scaling)' : 'Scaling & Polishing Dental Service') 
+                            : (isId ? 'Paket Konsultasi + Pembersihan Karang Gigi' : 'Consultation + Dental Hygiene Package')}
+                        </span>
+                        <div className="text-2xl font-black text-[#1B3A7A] tracking-tight my-1">
+                          {activeTabExample === 'discount' ? 'POTONGAN HARGA 30%' : 'AKSES LAYANAN KHUSUS'}
+                        </div>
+                        <span className="text-[11px] font-mono font-bold bg-[#EEF2FB] px-3 py-1 rounded-md text-[#1B3A7A] inline-block tracking-widest mt-1">
+                          {activeTabExample === 'discount' ? 'KHAYR-SCALE-30' : 'KHAYR-DENTAL-PKG'}
+                        </span>
+                      </div>
 
-                <div className="text-[11px] text-[#5A5F6B] space-y-1 mb-4">
-                  <div className="flex justify-between">
-                    <span>{isId ? 'Masa Berlaku:' : 'Validity:'}</span>
-                    <span className="font-bold text-[#141928]">{isId ? '30 Hari sejak penukaran' : '30 Days from redemption'}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>{isId ? 'Klaim Melalui:' : 'Claim via:'}</span>
-                    <span className="font-bold text-[#3D8B7A]">Telkomsel, Indosat, XL, AXIS, AstraPay</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>{isId ? 'Biaya Klinik:' : 'Clinic Cost:'}</span>
-                    <span className="font-bold text-[#1B3A7A]">{isId ? 'Rp0 jika tidak terpakai' : 'Rp0 if unredeemed'}</span>
-                  </div>
-                </div>
+                      <div className="text-[11px] text-[#5A5F6B] space-y-1 mb-4">
+                        <div className="flex justify-between">
+                          <span>{isId ? 'Masa Berlaku:' : 'Validity:'}</span>
+                          <span className="font-bold text-[#141928]">{isId ? '30 Hari sejak penukaran' : '30 Days from redemption'}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>{isId ? 'Klaim Melalui:' : 'Claim via:'}</span>
+                          <span className="font-bold text-[#3D8B7A]">Telkomsel, Indosat, XL, AXIS, AstraPay</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>{isId ? 'Biaya Klinik:' : 'Clinic Cost:'}</span>
+                          <span className="font-bold text-[#1B3A7A]">{isId ? 'Rp0 jika tidak terpakai' : 'Rp0 if unredeemed'}</span>
+                        </div>
+                      </div>
 
-                <div className="bg-[#FAFBFD] p-3 rounded-lg border border-slate-200 text-[10.5px] text-[#8A8F9A] text-center italic">
-                  {isId 
-                    ? '* Ilustrasi simulasi voucher. Layanan dan ketentuan potongan harga ditentukan sepenuhnya oleh pihak klinik.' 
-                    : '* Simulation voucher. Dental treatments and discount terms are fully determined by your clinic.'}
+                      <div className="bg-[#FAFBFD] p-3 rounded-lg border border-slate-200 text-[10.5px] text-[#8A8F9A] text-center italic">
+                        {isId 
+                          ? '* Ilustrasi simulasi voucher. Layanan dan ketentuan potongan harga ditentukan sepenuhnya oleh pihak klinik.' 
+                          : '* Simulation voucher. Dental treatments and discount terms are fully determined by your clinic.'}
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
-              </div>
+              </TiltShowcase>
 
             </div>
 
           </div>
-        </div>
+        </motion.div>
 
         {/* 4. Cara Kerja: Proses dari Pembuatan hingga Transaksi */}
         <div className="mb-20">
-          <div className="text-center max-w-3xl mx-auto mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center max-w-3xl mx-auto mb-14"
+          >
             <span className="text-[11px] font-extrabold text-[#1B3A7A] uppercase tracking-[2px] block mb-2">
               {isId ? 'ALUR LENGKAP FITUR' : 'COMPLETE WORKFLOW'}
             </span>
@@ -354,14 +417,21 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
                 ? 'Sistem promosi dirancang otomatis dan transparan melalui 4 tahap mudah berikut:' 
                 : 'A transparent, fully automated lifecycle spanning 4 seamless phases:'}
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Step 1 */}
-            <div className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#1B3A7A] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#1B3A7A] hover:shadow-[0_14px_32px_rgba(15,33,80,0.07)] transition-all group"
+            >
               <div>
-                <div className="w-11 h-11 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs group-hover:scale-105 transition-transform">
                   1
                 </div>
                 <span className="text-[10px] font-extrabold text-[#8A8F9A] uppercase tracking-wider block mb-1">
@@ -379,12 +449,19 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               <div className="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-[#1B3A7A]">
                 {isId ? 'Pembuatan 100% Gratis' : '100% Free Creation'}
               </div>
-            </div>
+            </motion.div>
 
             {/* Step 2 */}
-            <div className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#1B3A7A] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#1B3A7A] hover:shadow-[0_14px_32px_rgba(15,33,80,0.07)] transition-all group"
+            >
               <div>
-                <div className="w-11 h-11 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs group-hover:scale-105 transition-transform">
                   2
                 </div>
                 <span className="text-[10px] font-extrabold text-[#8A8F9A] uppercase tracking-wider block mb-1">
@@ -402,12 +479,19 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               <div className="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-[#3D8B7A]">
                 {isId ? 'Jangkau Calon Pasien Baru' : 'Tap Into Active Audiences'}
               </div>
-            </div>
+            </motion.div>
 
             {/* Step 3 */}
-            <div className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#3D8B7A] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.19, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#3D8B7A] hover:shadow-[0_14px_32px_rgba(61,139,122,0.09)] transition-all group"
+            >
               <div>
-                <div className="w-11 h-11 rounded-xl bg-[#E6F5F2] text-[#3D8B7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-[#E6F5F2] text-[#3D8B7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs group-hover:scale-105 transition-transform">
                   3
                 </div>
                 <span className="text-[10px] font-extrabold text-[#8A8F9A] uppercase tracking-wider block mb-1">
@@ -425,12 +509,19 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               <div className="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-[#3D8B7A]">
                 {isId ? 'Pasien Riil Datang ke Klinik' : 'Real In-Clinic Footfall'}
               </div>
-            </div>
+            </motion.div>
 
             {/* Step 4 */}
-            <div className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#1B3A7A] transition-all">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -5 }}
+              className="bg-white rounded-2xl border-2 border-[#DDE3EE] p-6.5 shadow-sm relative flex flex-col justify-between hover:border-[#1B3A7A] hover:shadow-[0_14px_32px_rgba(15,33,80,0.07)] transition-all group"
+            >
               <div>
-                <div className="w-11 h-11 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg mb-4 shadow-xs group-hover:scale-105 transition-transform">
                   4
                 </div>
                 <span className="text-[10px] font-extrabold text-[#8A8F9A] uppercase tracking-wider block mb-1">
@@ -448,13 +539,19 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               <div className="pt-4 mt-4 border-t border-slate-100 text-[11px] font-bold text-[#1B3A7A]">
                 {isId ? 'Otomatis dari Saldo Prabayar' : 'One-Balance Deduction'}
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
 
         {/* 5. Mekanisme Biaya dan Pemotongan Saldo Kredit */}
-        <div className="bg-[#FAFBFD] rounded-[24px] border-2 border-[#DDE3EE] p-8 sm:p-10 mb-20 shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[#FAFBFD] rounded-[24px] border-2 border-[#DDE3EE] p-8 sm:p-10 mb-20 shadow-sm"
+        >
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-xl bg-[#EEF2FB] text-[#1B3A7A] flex items-center justify-center font-black text-lg shrink-0">
               <Wallet size={20} />
@@ -470,7 +567,7 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-[13px] text-[#5A5F6B] leading-relaxed">
-            <div className="bg-white p-5 rounded-xl border border-[#DDE3EE] shadow-xs">
+            <div className="bg-white p-5 rounded-xl border border-[#DDE3EE] shadow-xs hover:border-[#1B3A7A]/35 transition-colors">
               <span className="font-extrabold text-[#141928] block mb-1.5">
                 {isId ? '1. Biaya Berbasis Penggunaan' : '1. Performance-Driven Cost'}
               </span>
@@ -481,7 +578,7 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-[#DDE3EE] shadow-xs">
+            <div className="bg-white p-5 rounded-xl border border-[#DDE3EE] shadow-xs hover:border-[#1B3A7A]/35 transition-colors">
               <span className="font-extrabold text-[#141928] block mb-1.5">
                 {isId ? '2. Potong Otomatis Saldo Prabayar' : '2. Direct Prepaid Debit'}
               </span>
@@ -492,7 +589,7 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-xl border border-[#DDE3EE] shadow-xs">
+            <div className="bg-white p-5 rounded-xl border border-[#DDE3EE] shadow-xs hover:border-[#1B3A7A]/35 transition-colors">
               <span className="font-extrabold text-[#141928] block mb-1.5">
                 {isId ? '3. Laporan Billing Transparan' : '3. Transparent Billing Audit'}
               </span>
@@ -503,10 +600,16 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 6. Call to Action: Ajakan Bertindak */}
-        <div className="bg-gradient-to-br from-[#1B3A7A] to-[#112660] text-white rounded-[24px] p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-gradient-to-br from-[#1B3A7A] to-[#112660] text-white rounded-[24px] p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xl relative overflow-hidden"
+        >
           <div className="absolute right-0 top-0 translate-x-1/4 -translate-y-1/4 w-80 h-80 bg-white/5 rounded-full blur-3xl pointer-events-none" />
           
           <div className="relative z-10">
@@ -527,7 +630,7 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#contact"
-                className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#1B3A7A] hover:bg-slate-100 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white text-[#1B3A7A] hover:bg-slate-100 rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 <span>{isId ? 'Konsultasi Fitur Promosi' : 'Consult Promotion Features'}</span>
                 <ArrowRight size={16} />
@@ -537,14 +640,14 @@ export function VoucherSection({ lang }: VoucherSectionProps) {
                 href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-3.5 bg-[#3D8B7A] hover:bg-[#2e6d5f] text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all shadow-md active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 bg-[#3D8B7A] hover:bg-[#2e6d5f] text-white rounded-xl text-xs sm:text-sm font-black flex items-center justify-center gap-2 transition-all shadow-md hover:-translate-y-0.5 active:scale-95 cursor-pointer"
               >
                 <MessageSquare size={16} />
                 <span>{isId ? 'Tanya via WhatsApp' : 'Chat via WhatsApp'}</span>
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>
